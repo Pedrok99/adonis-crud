@@ -8,6 +8,7 @@
     "build"
   ],
   "compilerOptions": {
+    "experimentalDecorators": true,
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
@@ -27,7 +28,8 @@
     },
     "types": [
       "@adonisjs/core",
-      "@adonisjs/repl"
+      "@adonisjs/repl",
+      "@adonisjs/lucid"
     ]
   }
 }
