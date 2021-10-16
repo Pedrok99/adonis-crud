@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeCreate } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
 import Hash from '@ioc:Adonis/Core/Hash'
 
 export default class Users extends BaseModel {
@@ -22,7 +22,7 @@ export default class Users extends BaseModel {
   @column({ serializeAs: null })
   public password: string
 
-  @column({serializeAs:null})
+  @column({columnName:'isActive', serializeAs:null})
   public isActive: boolean 
 
   @column.dateTime({ autoCreate: true , columnName:'createdAt', serializeAs:'createdAt'})
@@ -31,12 +31,24 @@ export default class Users extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true, columnName:'updatedAt', serializeAs:null})
   public updatedAt: DateTime
 
-  @beforeCreate()
+  // @beforeCreate()
+  // public static async hashPassword(user: Users) {
+  //   if(user.password){
+  //     try{
+  //       user.password = await Hash.make(user.password.toString())
+  //     }catch(e){
+  //       console.log(e)
+  //     }
+  //   }
+  // }  
+  @beforeSave()
   public static async hashPassword(user: Users) {
-    try{
-      user.password = await Hash.make(user.password.toString())
-    }catch(e){
-      console.log(e)
+    if(user.password){
+      try{
+        user.password = await Hash.make(user.password.toString())
+      }catch(e){
+        console.log(e)
+      }
     }
-  }  
+  }
 }
