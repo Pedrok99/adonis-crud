@@ -16,6 +16,10 @@
   - Acesse o diretório e rode:
      - ```yarn install```
   - Criar e preencher o arquivo **.env** com as informações do banco de dados (veja o arquivo .env.example)
+  - Rode as migrações:
+     - ```node ace migration:run```
+  - Rode o servidor de desenvolvimento:
+     - ```yarn dev```
 
 ## Rotas da aplicação:
 #### Listagem de Usuário(s): 
@@ -63,4 +67,3 @@ Exemplo de requisição para alteração do nome do usuário:
 }
 ```
 **Obs:** Apenas o atributo "userId" é obrigatório.
-
