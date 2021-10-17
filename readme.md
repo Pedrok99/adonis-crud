@@ -19,11 +19,12 @@
   - Clone o repositório
   - Acesse o diretório e rode:
      - ```yarn install``` ou ```npm install```
-  - Criar e preencher o arquivo **.env** com as informações do banco de dados (veja o arquivo .env.example)
+  - Criar e preencher o arquivo **.env** com as informações do banco de dados e da aplicação(veja o arquivo .env.example)
   - Rode as migrações:
      - ```node ace migration:run```
   - Rode o servidor de desenvolvimento:
      - ```yarn dev``` ou ```npm run dev```
+     - O servidor estará rodando na porta definida no **.env**
 
 ## Rotas da aplicação:
 #### Listagem de Usuário(s): 
